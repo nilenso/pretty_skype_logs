@@ -38,6 +38,23 @@ module.exports = function (grunt) {
         }]
       }
     },
+    compass: {
+      dist: {
+        options: {
+          require: "zurb-foundation",
+          sassDir: 'app/styles',
+          cssDir: 'app/assets',
+          environment: 'production'
+        }
+      },
+      dev: {
+        options: {
+          require: "zurb-foundation",
+          sassDir: 'app/styles',
+          cssDir: 'app/assets'
+        }
+      }
+    },
     yeoman: yeomanConfig,
     watch: {
       coffee: {
@@ -352,6 +369,9 @@ module.exports = function (grunt) {
 
   grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.registerTask('default', ['sass']);
+
+  grunt.loadNpmTasks('grunt-contrib-compass');
+  grunt.registerTask('default', ['jshint', 'compass']);
 
   grunt.registerTask('build', [
     'clean:dist',
