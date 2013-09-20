@@ -1,9 +1,60 @@
-<div class="hero-unit">
-  <h1>'Allo, 'Allo!</h1>
-  <p>You now have</p>
-  <ul>
-      <li ng-repeat="thing in awesomeThings">{{thing}}</li>
-  </ul>
-  <p>installed.</p>
-  <h3>Enjoy coding! - Yeoman</h3>
+<style type="text/css">
+
+  .inputConversationLog-textarea {
+    height: 200px;
+  }
+
+  .rendered {
+    padding: 3em;
+    font-size: 1.1em;
+  }
+
+  table.rendered-conversation {
+    border: none;
+    border-collapse:collapse;
+  }
+
+  tr.rendered-conversation-message {
+    background-color: white;
+    border: none;
+  }
+
+  tr.rendered-conversation-message td {
+    background-color: white;
+  }
+
+  td.rendered-conversation-timestamp {
+    white-space: nowrap;
+  }
+
+  td.rendered-conversation-username {
+    white-space: nowrap;
+  }
+
+    /* User specific styles */
+  tr.chatline-user0 td { color: #33426f; }
+  tr.chatline-user1 td { color: #6b4870; }
+  tr.chatline-user2 td { color: #6b4870; }
+  tr.chatline-user3 td { color: #705540; }
+  tr.chatline-user4 td { color: #207049; }
+  tr.chatline-user5 td { color: #839235; }
+  tr.chatline-user6 td { color: #56a07a; }
+  tr.chatline-user7 td { color: #839235; }
+</style>
+
+<div class="inputConversationLog">
+  <h1>Pretty-format Skype chat log</h1>
+  <textarea class='inputConversationLog-textarea' ng-change='renderConversation()' ng-model='inputConversationLog'></textarea>
 </div>
+
+<div class="rendered">
+  <table class='rendered-conversation'>
+    <tr ng-repeat="message in conversation" class="{{message.css_class}} rendered-conversation-message">
+      <td class="rendered-conversation-message-message">{{message.message}}</td>
+      <td class="rendered-conversation-username">{{message.formatted_username}}</td>
+      <td class="rendered-conversation-timestamp">{{message.formatted_timestamp}}</td>
+    </tr>
+  </table>
+</div>
+
+
