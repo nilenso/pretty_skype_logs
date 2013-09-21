@@ -1,5 +1,9 @@
 <style type="text/css">
 
+  .skypePrettify {
+    padding: 1em;
+  }
+
   .inputConversationLog-textarea {
     height: 200px;
   }
@@ -42,19 +46,20 @@
   tr.chatline-user7 td { color: #839235; }
 </style>
 
-<div class="inputConversationLog">
-  <h1>Pretty-format Skype chat log</h1>
-  <textarea class='inputConversationLog-textarea' ng-change='renderConversation()' ng-model='inputConversationLog'></textarea>
+<div class="skypePrettify">
+  <div class="inputConversationLog" ng-hide="inputConversationLogHidden">
+    <h2>Prettify Skype chat log</h2>
+    <textarea class='inputConversationLog-textarea' ng-change='renderConversation()' ng-model='inputConversationLog' placeholder="Paste your chat log here"></textarea>
+    <a href ng-click="inputConversationLogHidden = true">Click to show only results (this makes copying using CTRL+A CTRL+C easy)</a>
+  </div>
+
+  <div class="rendered" ng-show="conversation">
+    <table class='rendered-conversation'>
+      <tr ng-repeat="message in conversation" class="{{message.css_class}} rendered-conversation-message">
+        <td class="rendered-conversation-message-message">{{message.message}}</td>
+        <td class="rendered-conversation-username">{{message.formatted_username}}</td>
+        <td class="rendered-conversation-timestamp">{{message.formatted_timestamp}}</td>
+      </tr>
+    </table>
+  </div>
 </div>
-
-<div class="rendered">
-  <table class='rendered-conversation'>
-    <tr ng-repeat="message in conversation" class="{{message.css_class}} rendered-conversation-message">
-      <td class="rendered-conversation-message-message">{{message.message}}</td>
-      <td class="rendered-conversation-username">{{message.formatted_username}}</td>
-      <td class="rendered-conversation-timestamp">{{message.formatted_timestamp}}</td>
-    </tr>
-  </table>
-</div>
-
-

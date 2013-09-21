@@ -41,7 +41,7 @@ module.exports = function (grunt) {
     compass: {
       dist: {
         options: {
-          require: "zurb-foundation",
+          require: 'zurb-foundation',
           sassDir: 'app/styles',
           cssDir: 'app/assets',
           environment: 'production'
@@ -49,7 +49,7 @@ module.exports = function (grunt) {
       },
       dev: {
         options: {
-          require: "zurb-foundation",
+          require: 'zurb-foundation',
           sassDir: 'app/styles',
           cssDir: 'app/assets'
         }

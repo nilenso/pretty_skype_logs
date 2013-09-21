@@ -28,7 +28,7 @@ angular.module("findingBitsV2App").controller "MainCtrl", ($scope) ->
 
   # return unique list of usernames in the conversation
   usersInConversation = (conversation) ->
-    # TODO: figure out why _.uniq isn't working directly.
+    # TODO: figure out why _.uniq isn't working with an iterator.
     users = _.map(conversation, (parsed_line) ->
       parsed_line.username
     )
